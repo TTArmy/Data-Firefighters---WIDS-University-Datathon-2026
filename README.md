@@ -1,12 +1,46 @@
+# Wildfires and Social Vulnerability: A Territorial Analysis Across the United States
 
+## 📌 Project Overview
+This project investigates the complex intersection between environmental hazards and socio-economic structures. By analyzing data from **962 territorial units (counties)** in the US, we explore how factors such as income inequality, digital poverty, and demographic vulnerability influence the impact of wildfires, measured by the burned area per 1,000 inhabitants.
 
-The Intersection of Fire and Society
-Wildfires have become one of the most pressing environmental challenges in the United States, growing in both frequency and intensity due to shifting climatic patterns and changing land-use practices. While the ecological and atmospheric drivers of these fires are well-documented, the human dimension—specifically how social and economic structures dictate the impact of these events—remains a critical area of study. This project, titled "Wildfires and Social Vulnerability: A Territorial Analysis Across the United States," seeks to bridge the gap between environmental hazard and social reality.
+The research moves beyond traditional firefighting metrics to examine how **Social Vulnerability** acts as a force multiplier for natural disasters.
 
-The core objective of this research is to move beyond viewing wildfires as purely "natural" disasters. Instead, we analyze them as socio-environmental phenomena where the severity of the impact is determined not just by the heat of the flames, but by the resilience of the communities they strike. By analyzing data from 962 territorial units (counties), we investigate how variables such as income inequality, digital poverty, disability rates, and age-related isolation interact with fire dynamics to create pockets of heightened vulnerability.
+---
 
-Our analysis follows a rigorous three-step methodology. First, Descriptive Statistics provide a baseline of the stark disparities across US counties, highlighting the skewed distribution of fire impacts and economic resources. Second, an Exploratory Data Analysis (EDA) utilizes correlation matrices and multi-dimensional visualizations to uncover hidden patterns, such as the link between "digital poverty" (lack of internet access) and increased fire exposure. Finally, we employ advanced Machine Learning techniques—specifically Ensemble methods like Random Forest and LightGBM—to model these complex relationships.
+## 🛠 Methodology
+The analysis is structured into three distinct phases:
 
-The modeling phase is particularly revealing. By utilizing SHAP (SHapley Additive exPlanations) values, we move beyond "black-box" predictions to achieve true model interpretability. Our findings consistently show that while the physical hazard (the number of fires) is the primary driver of burned area, socio-economic factors act as significant "force multipliers." Factors like median income, the Gini index of inequality, and lack of vehicle access significantly influence a community's exposure and its capacity for evacuation and recovery.
+### Phase I: Descriptive Statistics
+A comprehensive overview of the dataset, identifying:
+* **Highly Skewed Distributions:** A small number of counties face extreme fire events ($max = 1331$ fires), while the median is much lower ($13$).
+* **Economic Discrepancies:** Median household incomes range from approximately $26,000 to $160,000.
+* **Data Transformation:** Applied log-transformation to variables like `acres_per_1000_people`, `median_income`, and `fires` to mitigate the effect of outliers.
 
-Ultimately, this project underscores a vital policy implication: managing wildfire risk is not just about firefighting and forest management. It is equally about addressing social inequities. Reducing the impact of wildfires requires a holistic approach that integrates emergency response with social welfare, ensuring that the most vulnerable populations—those with limited mobility, restricted access to information, or lower economic buffers—are not left behind when the smoke clears. Through this territorial lens, we provide a roadmap for more equitable and effective disaster risk management.
+### Phase II: Exploratory Data Analysis (EDA)
+Using correlation matrices and multi-dimensional visualizations:
+* **Digital Poverty & Risk:** A notable correlation between lack of internet access and fire exposure.
+* **Material Exclusion:** Strong clusters of correlations between lack of vehicles, disabilities, and lower income levels.
+* **Containment Dynamics:** Analysis suggests fire control effectiveness is driven more by local operational capacity than general socio-economic status.
+
+### Phase III: Machine Learning Modeling
+We employed advanced Ensemble methods to model non-linear relationships:
+* **Regression Tree:** Provided an initial interpretability layer, identifying fire frequency as the primary split.
+* **Random Forest ($R^2 \approx 0.49$):** Improved accuracy by capturing interactions between variables.
+* **LightGBM ($R^2 \approx 0.55$):** Our best-performing model, utilizing gradient boosting to handle complex patterns.
+
+---
+
+## 🔍 Key Findings & Interpretability
+We utilized **SHAP (SHapley Additive exPlanations)** to ensure model transparency.
+
+* **Hazard vs. Vulnerability:** While the number of fires (`log_fires`) is the dominant predictor, socio-economic context dictates the severity.
+* **The Income Effect:** Lower-income counties consistently show higher SHAP values for fire impact, suggesting lower recovery and prevention capacity.
+* **Access to Resources:** Lack of internet and vehicle access are critical vulnerability markers.
+
+---
+
+## 🚀 Conclusions
+Wildfire impact is a **socio-environmental** phenomenon. Effective disaster management must integrate:
+1. **Environmental Management:** Outbreak control and fireline containment.
+2. **Social Policy:** Addressing digital poverty and mobility limitations.
+3. **Targeted Intervention:** Strengthening response capacities in counties with high Gini indices.
